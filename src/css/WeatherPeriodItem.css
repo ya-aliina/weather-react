@@ -1,0 +1,16 @@
+.WeatherPeriodItem {
+    width: 72px;
+    height: 90px;
+    padding: 5px;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-sizing: border-box;
+    text-align: center;  
+    margin: 3px;
+}
+
+.WeatherPeriodItem .icon img {
+    height: 32px;
+    width: auto;
+    margin: 5px auto;
+}

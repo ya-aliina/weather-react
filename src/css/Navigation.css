@@ -1,0 +1,58 @@
+.Navigation {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Navigation #weather-period-wrapper span {
+    margin-right: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.Navigation #weather-period-wrapper span:hover {
+    color: var(--black);
+    transition: var(--transition);
+}
+
+.Navigation .weather-period.active {
+    color: var(--black);
+    border-bottom: 2px solid var(--black);
+}
+
+.Navigation .temperature-btns-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.Navigation .change-temperature-btn.active, .change-temperature-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.Navigation .change-temperature-btn:first-child {
+    margin-right: 10px;
+}
+
+.Navigation .change-temperature-btn {
+    background-color: var(--white);
+    font-weight: 800;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.Navigation .change-temperature-btn.active, .change-temperature-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+    transition: var(--transition);
+}
+
+
+
+

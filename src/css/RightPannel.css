@@ -1,0 +1,10 @@
+.RightPannel {
+    width: calc(var(--wrapper-width) - var(--left-column-width));
+    padding: var(--wrapper-padding);
+}
+
+.RightPannel .week-weather-information-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
