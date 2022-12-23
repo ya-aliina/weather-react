@@ -9,6 +9,10 @@ function App() {
         <LeftPannel />
         <RightPannel />
       </div>
+      <div className="copyright">
+        <a href="https://github.com/freshgoldroses/weather-app">GitHub</a>
+        <span> | Alina Makovii</span>
+      </div>
     </div>
   );
 }

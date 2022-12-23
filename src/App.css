@@ -14,8 +14,12 @@
 
 .App .weather-box {
     display: flex;
-    margin: auto;
     background-color: var(--light-grey);
     min-width: var(--wrapper-width);
     border-radius: 30px;
+}
+
+.App .copyright {
+    margin-top: 15px;
+    color: black;
 }
