@@ -1,16 +1,16 @@
 .CityImg {
-    position: relative;
-    margin-top: 20px;
+	position: relative;
+	margin-top: 20px;
 }
 
 .CityImg .viewed-city-image {
-    filter: brightness(65%);
-    border-radius: var(--radius);
+	filter: brightness(65%);
+	border-radius: var(--radius);
 }
 
 .CityImg .viewed-city-name {
-    position: absolute;
-    color: var(--white);
-    top: 30px;
-    left: 20px;
+	position: absolute;
+	color: var(--white);
+	top: 30px;
+	left: 20px;
 }

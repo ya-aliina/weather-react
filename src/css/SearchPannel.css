@@ -1,41 +1,41 @@
 .SearchPannel {
-    display: flex;
+	display: flex;
 }
 
 .SearchPannel #search-city-input {
-    border-radius: 15px;
-    padding: 5px 30px 5px 23px;
-    height: 30px;
-    width: 100%;
+	border-radius: 15px;
+	padding: 5px 30px 5px 23px;
+	height: 30px;
+	width: 100%;
 }
 
 .SearchPannel .input-search-icon {
-    position: absolute;
-    margin: 5px 8px;
+	position: absolute;
+	margin: 5px 8px;
 }
 
 .SearchPannel .search-icon, 
 .SearchPannel .current-location-icon {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--black);
-    line-height: 0;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--black);
+	line-height: 0;
 }
 
 .SearchPannel #current-location-button, .search-location {
-    background-color: var(--light-grey);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 24px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    margin: 5px 0;
-    margin-left: 5px;
+	background-color: var(--light-grey);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 24px;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+	margin: 5px 0;
+	margin-left: 5px;
 }
 
 .SearchPannel #current-location-button:hover, .search-location:hover {
-    background-color: #e2e1e2;
-    transition: all 0.3s ease;
+	background-color: #e2e1e2;
+	transition: all 0.3s ease;
 }

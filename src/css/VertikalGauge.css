@@ -1,18 +1,18 @@
 .VertikalGauge {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 20px;
-    height: 60px;
-    border-radius: 15px;
-    padding: 2px;
-    border: 2px solid var(--light-grey);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 20px;
+	height: 60px;
+	border-radius: 15px;
+	padding: 2px;
+	border: 2px solid var(--light-grey);
 }
 
 .vertical-gauge-circle {
-    position: absolute;
-    background-color: var(--blue);
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
+	position: absolute;
+	background-color: var(--blue);
+	border-radius: 50%;
+	width: 14px;
+	height: 14px;
 }
