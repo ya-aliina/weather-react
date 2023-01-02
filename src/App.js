@@ -5,7 +5,7 @@ import RightPannel from "./js/RightPannel";
 import axios from "axios";
 
 export default function App() {
-	const apiKey = "25fad9f7e87157d33dde0f82ab269ee8";
+	const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
 	const [city, setCity] = useState(`Lviv`);
 	const [ready, setReady] = useState(false);
 	const [coordinates, setCoordinates] = useState({ ready: false });
@@ -16,10 +16,14 @@ export default function App() {
 			ready: true,
 			lat: response.data.coord.lat,
 			lon: response.data.coord.lon,
+			// city: response.data.name,
+			// country: response.data.sys.country
 		});
-		if (coordinates.ready) {
+		// if (coordinates.ready) {
 			requestData();
-		}
+			setCity(response.data.name);
+			console.log(response.data.name)
+		// }
 	}
 
 	function requestData() {
@@ -36,6 +40,7 @@ export default function App() {
 		
 			setTodayWeather({
 				ready: true,
+				// city: coordinates.city,
 				temp: response.data.current.temp,
 				date: response.data.current.dt,
 				icon: response.data.current.weather[0].icon,
@@ -52,21 +57,24 @@ export default function App() {
 		
 	};
 
-	function searchByName() {
-		let dataUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+	function searchByName(name) {
+		let dataUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=${apiKey}`;
 		axios.get(dataUrl).then(getCoordinates);
+	}
+
+	function getCityName(name) {
+		setCity(name);
+		searchByName(name);
 	}
 
 	if (ready) {
 		return (
 			<div className="App">
 				<div className="weather-box">
-					<LeftPannel weather={todayWeather} />
+					<LeftPannel weather={todayWeather} cityName={city} onSubmit={getCityName} />
 					<RightPannel weather={todayWeather} />
 				</div>
 				<div className="copyright">
-					<div>{coordinates.lat}</div>
-					<div>{coordinates.lon}</div>
 					<a href="https://github.com/freshgoldroses/weather-app">
 						GitHub
 					</a>
@@ -75,7 +83,7 @@ export default function App() {
 			</div>
 		);
 	} else {
-		searchByName();
+		searchByName(city);
 		return <div className="App">Loading...</div>;
 	}
 }
