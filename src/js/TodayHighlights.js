@@ -1,31 +1,17 @@
 import "../css/TodayHighlights.css";
+import FormatedTime from "./FormatedTime";
+import Gauge from "./Gauge";
 import VertikalGauge from "./VertikalGauge.js";
 
 function TodayHighlights(props) {
+	console.log();
 	return (
 		<div className="TodayHighlights">
 			<div className="title">Today's Highlights</div>
 			<div className="today-highlights-list-row">
 				<div className="today-highlights-item">
 					<div className="sub-title light-text-color">UV Index</div>
-					<div className="gauge">
-						<span className="three-uv main-text">3</span>
-						<span className="six-uv main-text">6</span>
-						<span className="nine-uv main-text">9</span>
-						<span className="twelve-uv main-text">12</span>
-						<div className="gauge-body">
-							<div className="gauge-contour"></div>
-							<div className="gauge-fill"></div>
-							<div className="gauge-cover">
-								<div
-									className="today-highlights-item-number gauge-text"
-									id="uv-index"
-								>
-									{props.weather.uvi}
-								</div>
-							</div>
-						</div>
-					</div>
+					<Gauge weather={props.weather}/>
 				</div>
 				<div className="today-highlights-item">
 					<div className="sub-title light-text-color">
@@ -57,7 +43,7 @@ function TodayHighlights(props) {
 						<i className="bx bx-up-arrow-alt sunrise-icon"></i>
 						<div className="time">
 							<div className="time-today main-text" id="sunrise-time">
-								07:41 AM
+								<FormatedTime time={props.weather.sunrise} />
 							</div>
 						</div>
 					</div>
@@ -65,7 +51,7 @@ function TodayHighlights(props) {
 						<i className="bx bx-down-arrow-alt sunset-icon"></i>
 						<div className="sub-title time">
 							<div className="time-today main-text" id="sunset-time">
-								04:26 PM
+							<FormatedTime time={props.weather.sunset} />
 							</div>
 						</div>
 					</div>

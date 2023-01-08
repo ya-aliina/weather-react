@@ -24,96 +24,6 @@
 	justify-content: space-between;
 }
 
-.TodayHighlights .gauge {
-	width: 100%;
-	max-width: 250px;
-	color: var(--grey);
-	position: relative;
-	margin-top: 7px;
-	padding-top: 10px;
-}
-
-.three-uv,
-.six-uv,
-.nine-uv,
-.twelve-uv {
-	position: absolute;
-}
-
-.TodayHighlights .three-uv {
-	left: 6px;
-	top: 27px;
-}
-
-.TodayHighlights .six-uv {
-	left: 44px;
-	top: 0;
-}
-
-.TodayHighlights .nine-uv {
-	left: 90px;
-	top: 0;
-}
-
-.TodayHighlights .twelve-uv {
-	left: 126px;
-	top: 27px;
-}
-
-.TodayHighlights .gauge-body {
-	width: 100%;
-	height: 0;
-	padding-bottom: 50%;
-	background: transparent;
-	position: relative;
-	border-top-left-radius: 100% 200%;
-	border-top-right-radius: 100% 200%;
-	overflow: hidden;
-}
-
-.TodayHighlights .gauge-contour {
-	width: 93%;
-	height: 193%;
-	background: transparent;
-	border: 10px solid var(--light-grey);
-	border-radius: 50%;
-	position: absolute;
-	top: 8%;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.TodayHighlights .gauge-fill {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	width: inherit;
-	height: 100%;
-	background: var(--orange);
-	transform-origin: center top;
-	transform: rotate(0 turn);
-	transition: transform 0.2s ease-out;
-}
-
-.TodayHighlights .gauge-cover {
-	width: 70%;
-	height: 150%;
-	background: var(--white);
-	border-radius: 50%;
-	position: absolute;
-	top: 30%;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-bottom: 25%;
-}
-
-.TodayHighlights .gauge-text {
-	color: var(--black);
-	box-sizing: border-box;
-}
 
 .TodayHighlights .today-highlights-item-number {
 	color: var(--black);
@@ -134,7 +44,6 @@
 	align-items: center;
 	margin-right: 7px;
 }
-
 
 .compass {
 	width: 12px;

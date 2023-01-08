@@ -1,89 +1,93 @@
 import React, { useState } from "react";
-import "./App.css";
-import LeftPannel from "./js/LeftPannel";
-import RightPannel from "./js/RightPannel";
+
 import axios from "axios";
+import SearchPannel from "./js/SearchPannel";
+import Navigation from "./js/Navigation.js";
+import TodayHighlights from "./js/TodayHighlights.js";
+import TodayMainInfo from "./js/TodayMainInfo.js";
+import Forecast from "./js/Forecast.js";
+
+import "./App.css";
+import "./css/LeftPannel.css";
+import "./css/RightPannel.css";
+import "./css/SearchPannel.css";
 
 export default function App() {
-	const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-	const [city, setCity] = useState(`Lviv`);
-	const [ready, setReady] = useState(false);
-	const [coordinates, setCoordinates] = useState({ ready: false });
-	const [todayWeather, setTodayWeather] = useState({ ready: false });
+    const apiKey = "aa09763d916df0424c840d55bfc2d2c9";
+    const [city, setCity] = useState(`Lviv`);
+    const [todayWeather, setTodayWeather] = useState({ ready: false });
+	const [forecast, setForecast] = useState({ ready: false });
 
-	function getCoordinates(response) {
-		setCoordinates({
+    function getCityName(name) {
+        setCity(name);
+        setTodayWeather({ ready: false });
+		console.log('name');
+    }
+
+    function searchByName(name) {
+        let dataUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=${apiKey}`;
+        axios.get(dataUrl).then(getCoordinates);
+		console.log('1', city);
+    }
+
+    function getCoordinates(response) {
+        setCity(response.data.name);
+
+		let oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&exclude=minutely&appid=${apiKey}&units=metric&exclude=minutely`;
+		axios.get(oneCallUrl).then(getTodayWeather);
+		console.log('2', city);
+    }
+
+    function getTodayWeather(response) {
+        setTodayWeather({
+            ready: true,
+            temp: response.data.current.temp,
+            date: response.data.current.dt,
+            icon: response.data.current.weather[0].icon,
+            description: response.data.current.weather[0].description,
+            feelsLike: response.data.current.feels_like,
+            uvi: response.data.current.uvi,
+            windDeg: response.data.current.wind_deg,
+            windSpeed: response.data.current.wind_speed,
+            sunrise: response.data.current.sunrise,
+            sunset: response.data.current.sunset,
+            humidity: response.data.current.humidity,
+            visibility: response.data.current.visibility,
+        });
+		setForecast ({
 			ready: true,
-			lat: response.data.coord.lat,
-			lon: response.data.coord.lon,
-			// city: response.data.name,
-			// country: response.data.sys.country
+			dailyForecast: response.data.daily,
+			hourlyForecast: response.data.hourly
 		});
-		// if (coordinates.ready) {
-			requestData();
-			setCity(response.data.name);
-			console.log(response.data.name)
-		// }
-	}
+    }
 
-	function requestData() {
-		let oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=minutely&appid=${apiKey}&units=metric&exclude=minutely`;
-		axios.get(oneCallUrl).then(getWeather);
-	}
+    if (todayWeather.ready) {
+        return (
+            <div className="App">
+                <div className="weather-box">
+                    <div className="leftPannel">
+                        <SearchPannel onSubmit={getCityName} />
+                        <TodayMainInfo city={city} weather={todayWeather} />
+                    </div>
 
-	function getWeather(response) {
-		getTodayWeather(response);
-		setReady(true);
-	}
+                    <div className="RightPannel">
+                        <Navigation />
+						<Forecast daily={forecast.dailyForecast} hourly={forecast.hourlyForecast} forecastType='daily'/>
+                        <TodayHighlights weather={todayWeather} />
+                    </div>
 
-	function getTodayWeather(response) {
-		
-			setTodayWeather({
-				ready: true,
-				// city: coordinates.city,
-				temp: response.data.current.temp,
-				date: response.data.current.dt,
-				icon: response.data.current.weather[0].icon,
-				description: response.data.current.weather[0].description,
-				feelsLike: response.data.current.feels_like,
-				uvi: response.data.current.uvi,
-				windDeg: response.data.current.wind_deg,
-				windSpeed: response.data.current.wind_speed,
-				sunrise: response.data.current.sunrise,
-				sunset: response.data.current.sunset,
-				humidity: response.data.current.humidity,
-				visibility: response.data.current.visibility
-			})
-		
-	};
-
-	function searchByName(name) {
-		let dataUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=${apiKey}`;
-		axios.get(dataUrl).then(getCoordinates);
-	}
-
-	function getCityName(name) {
-		setCity(name);
-		searchByName(name);
-	}
-
-	if (ready) {
-		return (
-			<div className="App">
-				<div className="weather-box">
-					<LeftPannel weather={todayWeather} cityName={city} onSubmit={getCityName} />
-					<RightPannel weather={todayWeather} />
-				</div>
-				<div className="copyright">
-					<a href="https://github.com/freshgoldroses/weather-app">
-						GitHub
-					</a>
-					<span> | Alina Makovii</span>
-				</div>
-			</div>
-		);
-	} else {
-		searchByName(city);
-		return <div className="App">Loading...</div>;
-	}
+                </div>
+                <div className="copyright">
+                    <a href="https://github.com/freshgoldroses/weather-app">
+                        GitHub
+                    </a>
+                    <span> | Alina Makovii</span>
+                </div>
+            </div>
+        );
+    } else {
+			searchByName(city);
+			console.log('+++')
+        return <div className="App">Loading...</div>;
+    }
 }

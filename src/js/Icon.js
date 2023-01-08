@@ -1,5 +1,5 @@
 function Icon(props) {
-    let icon = props.weather.icon;
+    let icon = props.icon;
 
     function checkMissingIcon() {
         if (icon === "04d") {
@@ -25,7 +25,7 @@ function Icon(props) {
             className="Icon"
             id="current-weather-icon"
             src={`./img/icons/day/${icon}.svg`}
-            alt={props.weather.description}
+            alt={props.text}
         />
     );
 }

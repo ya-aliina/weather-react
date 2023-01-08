@@ -1,0 +1,99 @@
+
+.Gauge {
+	width: 100%;
+	max-width: 250px;
+	color: var(--grey);
+	position: relative;
+	margin-top: 7px;
+	padding-top: 10px;
+}
+
+.three-uv,
+.six-uv,
+.nine-uv,
+.twelve-uv {
+	position: absolute;
+}
+
+.Gauge .three-uv {
+	left: 6px;
+	top: 27px;
+}
+
+.Gauge .six-uv {
+	left: 44px;
+	top: 0;
+}
+
+.Gauge .nine-uv {
+	left: 90px;
+	top: 0;
+}
+
+.Gauge .twelve-uv {
+	left: 126px;
+	top: 27px;
+}
+
+.Gauge .gauge-body {
+	width: 100%;
+	height: 0;
+	padding-bottom: 50%;
+	background: transparent;
+	position: relative;
+	border-top-left-radius: 100% 200%;
+	border-top-right-radius: 100% 200%;
+	overflow: hidden;
+}
+
+.Gauge .gauge-contour {
+	width: 93%;
+	height: 193%;
+	background: transparent;
+	border: 10px solid var(--light-grey);
+	border-radius: 50%;
+	position: absolute;
+	top: 8%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.Gauge .gauge-fill {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: inherit;
+	height: 100%;
+	background: var(--orange);
+	transform-origin: center top;
+	transform: rotate(0 turn);
+	transition: transform 0.2s ease-out;
+}
+
+.Gauge .gauge-cover {
+	width: 70%;
+	height: 150%;
+	background: var(--white);
+	border-radius: 50%;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 25%;
+}
+
+.Gauge .gauge-text {
+	color: var(--black);
+	box-sizing: border-box;
+}
+
+.Gauge .hide-text {
+    display: none;
+}
+
+.Gauge .show-text {
+    display: inline;
+}

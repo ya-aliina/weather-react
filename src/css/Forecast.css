@@ -1,0 +1,9 @@
+.Forecast .dailyForecast,
+.Forecast .hourlyForecast{
+	display: flex;
+	margin-top: 35px;
+}
+
+.Forecast .none {
+    display: none;
+}
